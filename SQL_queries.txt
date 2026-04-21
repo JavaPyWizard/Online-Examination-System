@@ -1,0 +1,37 @@
+CREATE DATABASE online_exam;
+USE online_exam;
+
+CREATE TABLE users(
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50),
+    password VARCHAR(50),
+    role VARCHAR(20)
+);
+
+CREATE TABLE quizzes(
+    quiz_id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(100)
+);
+
+CREATE TABLE questions(
+    question_id INT AUTO_INCREMENT PRIMARY KEY,
+    quiz_id INT,
+    question TEXT,
+    option1 VARCHAR(100),
+    option2 VARCHAR(100),
+    option3 VARCHAR(100),
+    option4 VARCHAR(100),
+    correct_option INT
+);
+
+CREATE TABLE results(
+    result_id INT AUTO_INCREMENT PRIMARY KEY,
+    student_id INT,
+    quiz_id INT,
+    score INT
+);
+INSERT INTO users(username,password,role) VALUES
+('teacher1','123','teacher'),
+('student1','123','student');
+ALTER TABLE quizzes ADD created_by INT;
+ALTER TABLE quizzes ADD time_limit INT;
